@@ -3,6 +3,8 @@ package com.emazon.category.adapters.out.persistence;
 import com.emazon.category.domain.model.Category;
 import com.emazon.category.domain.port.out.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -25,5 +27,9 @@ public class JpaCategoryRepository implements CategoryRepository {
     @Override
     public Category save(Category category) {
         return springDataJpaCategoryRepository.save(category);
+    }
+
+    public Page<Category> findAll(Pageable pageable) {
+        return springDataJpaCategoryRepository.findAll(pageable);
     }
 }
