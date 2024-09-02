@@ -6,10 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +26,4 @@ public class Category {
     @NotBlank(message = "La descripción no puede estar vacía")
     @Size(max = 90, message = "La descripcion no puede tener más de 90 caracteres")
     private String description;
-
-    public Category(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
 }
